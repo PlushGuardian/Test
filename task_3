@@ -1,0 +1,48 @@
+#define _CRT_SECURE_NO_WARNINGS
+#include<stdio.h>
+#include<string.h>
+
+int main()
+{
+	char name[1001]; //name of a person
+	char surn[1001]; //surname of a person
+	int count=0; //how many characters match
+	int i=0, j; //counters
+	int len;
+	char ch='0';
+
+	gets_s(name,1000);	
+	gets_s(surn,1000);
+
+
+	if (strlen(name) != strlen(surn)) printf("NO\n");
+	else
+	{
+		len = strlen(name);
+		
+		//checking for smol letters
+		for (i = 0; i < len; i++)
+		{
+			if (int(name[i]) > 90) name[i] = name[i] - ' ';
+			if (int(surn[i]) > 90) surn[i] = surn[i] - ' ';
+		}
+		
+		//comparing
+		
+		for (i = 0; i < len; i++)
+		{
+			for (j = 0; j < len; j++)
+			{
+				if (name[i] == surn[j])
+				{
+					count++;
+					surn[j] == '0';
+					break;
+				}
+			}
+		}
+		if (count == len) printf("YES\n");
+		else printf("NO\n");
+	}
+	return 0;
+}
